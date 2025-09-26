@@ -1,0 +1,46 @@
+/*
+very slow since it has to traverse the list twice, could be heavily optimized
+Runtime 95 ms
+Beats 9.44%
+
+Memory 14.04 MB
+Beats 78.63%
+
+The memory it takes up is not horrible, but speed is preferred
+
+will probably try again with maps
+*/
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        //initial declaration and initializing
+        vector <int> output;
+        int first = 0;
+        int second = 0;
+        bool found = 0;
+        //cout << 1<< " "<<2<< endl;
+        // going through first loop, then second to compare every number to each other
+        for(int i=0; i < nums.size();i++){
+            cout << i << endl;
+            //cout << nums[i]<< " "<<2<< endl;
+            for(int j=i+1; j < nums.size();j++){
+                //cout << nums[i]<< " "<<nums[j]<< endl;
+                //cout << i << " " << j << endl;
+                // if the combination adds to the target, keep track of the space and break out
+                if(nums[i]+nums[j]== target){
+                    output.insert(output.begin(),i);
+                    output.insert(output.begin()+1,j);
+                    found = 1;
+                    break;
+                }
+            }
+            if(found==1){
+                break;
+            }
+        }
+        if(found==1){
+            return output;
+        }
+        return output;
+    }
+};
