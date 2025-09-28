@@ -1,0 +1,37 @@
+/*
+This version, using maps, was a lot faster since the extra loop was not needed, bringing the time down drastically
+
+Runtime 5 ms
+Beats 48.05%
+
+Memory 14.83 MB
+Beats 36.00%
+
+I think this was a very good speed up while only bringing up the memory slightly
+*/
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        //main declaration of variables and inti
+        vector<int> output;
+        unordered_map<int, int> adds = {};
+        int temp=0;
+        // add all of nums
+        for(int i = 0; i < nums.size(); i++){
+            temp = target - nums[i];
+            if(adds.find(temp) != adds.end()){//if the required amount exist in the map enter
+                return output = {i,adds.at(temp)};
+                //output.push_back(i);
+                //int val = adds.at(temp);
+                //cout << temp2 << endl;
+                //output.push_back(adds.at(temp));
+                return output;
+            }
+            else{
+                adds.insert({nums[i],i});
+            }
+        }
+        //
+        return output;
+    }
+};
